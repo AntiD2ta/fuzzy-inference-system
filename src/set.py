@@ -23,7 +23,25 @@ class Set:
             ),
             items
         )
-        return Set(memb, min(self.step, other_set.step))
+        return Set(memb, step=min(self.step, other_set.step), name=f'{self.name}_union_{other_set.name}')
+
+    def __and__(self, other_set):
+        return self.intersection(other_set)
+
+    def intersection(self, other_set):
+        '''
+        T-norm union
+        '''
+        items = self.membership.items + other_set.membership.items
+        items.sort()
+        memb = Membership(
+            lambda x: min(
+                self.membership(x),
+                other_set.membership(x)
+            ),
+            items
+        )
+        return Set(memb, step=min(self.step, other_set.step), name=f'{self.name}_intersection_{other_set.name}')
 
     def domain(self):
         d = set(arange(self.membership.items[0], self.membership.items[-1], self.step))
