@@ -1,4 +1,4 @@
-from ..membership import Membership
+from .membership import Membership
 from .s import SMembership
 from .z import ZMembership
 

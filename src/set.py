@@ -2,15 +2,18 @@ from .membership import Membership
 from numpy import arange
 
 class Set:
-    def __init__(self, membership, step, name="Fuzzy Set"):
+    def __init__(self, membership, step=0.05, name="Fuzzy Set"):
         self.membership = membership
-        self.step = 0.05
+        self.step = step
         self.name = name
 
     def __or__(self, other_set):
         return self.union(other_set)
 
     def union(self, other_set):
+        '''
+        T-conorm union
+        '''
         items = self.membership.items + other_set.membership.items
         items.sort()
         memb = Membership(

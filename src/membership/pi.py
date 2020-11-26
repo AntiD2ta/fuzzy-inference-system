@@ -1,4 +1,4 @@
-from ..membership import Membership
+from .membership import Membership
 
 
 class PiMembership(Membership):
