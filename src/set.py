@@ -1,8 +1,10 @@
 from .membership import Membership
 from numpy import arange
 
+import matplotlib.pyplot as plt
+
 class Set:
-    def __init__(self, membership, step=0.05, name="Fuzzy Set"):
+    def __init__(self, membership, step=0.01, name="Fuzzy Set"):
         self.membership = membership
         self.step = step
         self.name = name
@@ -14,7 +16,7 @@ class Set:
         '''
         T-conorm union
         '''
-        items = self.membership.items + other_set.membership.items
+        items = list(set(self.membership.items + other_set.membership.items))
         items.sort()
         memb = Membership(
             lambda x: max(
@@ -46,9 +48,8 @@ class Set:
     def domain(self):
         d = set(arange(self.membership.items[0], self.membership.items[-1], self.step))
         d.update(set(self.membership.items))
-        if len(d) > 100:
-            d = list(d)
-            d.sort()
+        d = list(d)
+        d.sort()
         return list(d)
 
     def __iter__(self):
@@ -59,3 +60,14 @@ class Set:
 
     def __str__(self):
         return self.name
+
+    def graph(self):
+        x_data = self.domain()
+        y_data = [self.membership(x) for x in x_data]
+        plt.figure()
+        plt.title(self.name)
+        plt.xlabel("Domain values")
+        plt.ylabel("Membership grade")
+        plt.plot(x_data, y_data)
+        plt.savefig(f"set_{self.name}.png")
+        
