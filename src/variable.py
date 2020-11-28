@@ -25,9 +25,9 @@ class Var():
 
     def add_term(self, term, memb, step=None):
         if step is None:
-            new_set = Set(memb, name=term)
+            new_set = Set(memb, name=term, var=self.name)
         else:
-            new_set = Set(memb, step, name=term)
+            new_set = Set(memb, step, name=term, var=self.name)
         self.sets[term] = new_set
 
     def Is(self, name):
@@ -35,7 +35,7 @@ class Var():
             fuz_set = self.sets[name]
         except KeyError:
             raise Exception(f'{name} is not a valid term of {self.name} Variable')
-        set_copy = Set(fuz_set.membership, fuz_set.step, fuz_set.name)
+        set_copy = Set(fuz_set.membership, fuz_set.step, fuz_set.name, fuz_set.var)
         return Preposition(set_copy, self.name)
 
     def __str__(self):
@@ -51,3 +51,4 @@ class Var():
         plt.legend()
         plt.title(self.name)
         plt.savefig(f"var_{self.name}.png")
+        

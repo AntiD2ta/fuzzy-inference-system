@@ -4,10 +4,11 @@ from numpy import arange
 import matplotlib.pyplot as plt
 
 class Set:
-    def __init__(self, membership, step=0.01, name="Fuzzy Set"):
+    def __init__(self, membership, step=0.01, name="Fuzzy Set", var='Variable'):
         self.membership = membership
         self.step = step
         self.name = name
+        self.var = var
 
     def __or__(self, other_set):
         return self.union(other_set)
@@ -25,7 +26,7 @@ class Set:
             ),
             items
         )
-        return Set(memb, step=min(self.step, other_set.step), name=f'{self.name}_union_{other_set.name}')
+        return Set(memb, step=min(self.step, other_set.step), name=f'{self.name}_union_{other_set.name}', var=self.var)
 
     def __and__(self, other_set):
         return self.intersection(other_set)
