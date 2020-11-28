@@ -1,4 +1,4 @@
-from ..rule import Preposition, Rule
+from ..rule import Preposition, BaseRule
 
 
 class InferenceSystem:
@@ -17,7 +17,7 @@ class InferenceSystem:
             raise ValueError("The antecedent is not a Preposition")
         if not isinstance(consecuents, Preposition):
             raise ValueError("The consecuent is not a Preposition")
-        self.add_rule(Rule(antecedents, consecuents))
+        self.add_rule(BaseRule(antecedents, consecuents))
         return self
 
     def infer(self, **values):
