@@ -13,6 +13,7 @@ class MamdaniLarsenRule(BaseRule):
         fuzz_value = self.antecedents(values)
         union = None
 
+        #\\TODO: Check for different Variables in consecuent
         for _, fuzz_set in self.consecuents:
             if union is None:
                 union = fuzz_set

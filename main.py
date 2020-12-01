@@ -6,9 +6,9 @@ from src.var_factory import make_variable
 import typer
 
 def main(
-    co2: int = typer.Argument(None ,help='Concentration of co2 in ppm. Use values between 300 and 1000'),
-    irrigation: int = typer.Argument(None, help='Irrigation frequency in times per week. Use values between 0 and 16'), 
-    seed_quality: int = typer.Argument(None, help='Quality of seed in germination percentage. Use values between 0 and 100'),
+    co2: int = typer.Argument(... ,help='Concentration of co2 in ppm. Use values between 300 and 1000'),
+    irrigation: int = typer.Argument(..., help='Irrigation frequency in times per week. Use values between 0 and 16'), 
+    seed_quality: int = typer.Argument(..., help='Quality of seed in germination percentage. Use values between 0 and 100'),
     method: str = typer.Option('Mamdani', help='Aggregation method. Available: Mamdani, Larsen'),
     defuzz = typer.Option('centroid', help='Defuzzification method to use. Available: centroid, bisection, lom, mom, som'),
     graph: bool = typer.Option(False, help='Set if you want to see the graphs of the memberships functions of the process')
