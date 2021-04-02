@@ -1,4 +1,4 @@
-# Fuzzy Infetence System
+# Fuzzy Inference System
 
 An implementation of a Inference System using fuzzy logic for Simulation class.
 
@@ -90,7 +90,7 @@ Check `doc/Informe.pdf` to see a full explanation of the ideas used to build the
 
 ## Author ✒️
 
-- **Miguel Tenorio Potrony** -------> [stdevAntiD2ta](https://github.com/stdevAntiD2ta)
+- **Miguel Tenorio Potrony** -------> [AntiD2ta](https://github.com/AntiD2ta)
 
 ## License 📄
 
